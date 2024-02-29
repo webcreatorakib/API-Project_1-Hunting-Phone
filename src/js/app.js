@@ -1,5 +1,5 @@
 //Data Load
-const dataLoad = async (searchText,loadAllItems) => {
+const dataLoad = async (searchText = '13',loadAllItems) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await res.json();
     const phones = data.data;
@@ -31,9 +31,9 @@ const displayData = (phones, loadAllItems) => {
         </figure>
         <div class="card-body items-center text-center">
             <h2 class="card-title">${phone.phone_name}</h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
+            <p class="my-5"></p>
             <div class="card-actions">
-                <button class="btn btn-primary">Buy Now</button>
+                <button onclick="showDetailsHandler('${phone.slug}')" class="btn btn-primary">Show Details</button>
             </div>
         </div>`;
         cardContainer.appendChild(createDiv);
@@ -45,7 +45,7 @@ const displayData = (phones, loadAllItems) => {
 //Search Handler
 const searchHandler = (loadAllItems) =>{
     const searchText = document.getElementById('search').value;
-    dataLoad(searchText,loadAllItems);
+    dataLoad(searchText, loadAllItems);
     toggleHandler(true);
 }
 
@@ -60,7 +60,45 @@ const toggleHandler = (toggleTrue) =>{
     }
 }
 
-//show all
+//Show Details
+const showDetailsHandler = async(id) =>{
+    const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
+    const data = await res.json();
+    const phone = data.data;
+    showPhoneDetails(phone);
+}
+const showPhoneDetails = (phone) =>{
+    showModal_details.showModal();
+    console.log(phone)
+    const showDetailsContainer = document.getElementById('showDetailsContainer');
+    const showDetailsContent = document.createElement('div');
+    showDetailsContainer.innerHTML = '';
+    showDetailsContent.innerHTML = `
+    <div class="card w-full shadow-xl">
+        <figure class="pt-10">
+            <img src="${phone.image}" alt="Shoes"
+                class="rounded-xl" />
+        </figure>
+        <div class="card-body">
+            <h2 class="card-title"> ${phone.name}</h2>
+            <p> Phone Description</p>
+            <p><strong>Storage: </strong>${phone?.mainFeatures?.storage}</p>
+               <p><strong>Display Size: </strong>${phone?.mainFeatures?.displaySize}</p>
+               <p><strong>Chip set: </strong>${phone?.mainFeatures?.chipSet}</p>
+               <p><strong>Memory: </strong>${phone?.mainFeatures?.memory}</p>
+               <p><strong>ID: </strong>${phone?.slug}</p>
+               <p><strong>Release Date: </strong>${phone?.mainFeatures?.releaseDate}</p>
+            <p><strong>Brand: </strong>${phone?.brand}</p>
+            <p><strong>Gps: </strong>${phone?.others?.GPS || "No Data Found"}</p> 
+        </div>
+    </div>
+    `
+    showDetailsContainer.appendChild(showDetailsContent);
+}
+//show all button
 const loadAll = () =>{
     searchHandler(true)
 }
+
+///default
+dataLoad();

@@ -20,9 +20,14 @@
                 <label class="input input-bordered flex items-center gap-2 pe-0 sm:pe-1">
                     <input type="text" id="search" class="grow w-full" placeholder="Search" />
                     <button class="btn" onclick="searchHandler()">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+                            class="w-4 h-4 opacity-70">
+                            <path fill-rule="evenodd"
+                                d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                                clip-rule="evenodd" />
+                        </svg>
                     </button>
-                  </label>
+                </label>
             </div>
         </section>
 
@@ -36,6 +41,22 @@
             <div class="text-center hidden mt-5" id="show-all">
                 <button class="btn btn-outline btn-info" onclick="loadAll()">Load All</button>
             </div>
+
+
+
+            <!-- Open the modal using ID.showModal() method -->
+            <dialog id="showModal_details" class="modal modal-bottom sm:modal-middle">
+                <div class="modal-box">
+                    <div id="showDetailsContainer">
+                    </div>
+                    <div class="modal-action">
+                        <form method="dialog">
+                            <!-- if there is a button in form, it will close the modal -->
+                            <button class="btn bg-red-600 text-white">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
         </section>
     </main>
     <footer>
