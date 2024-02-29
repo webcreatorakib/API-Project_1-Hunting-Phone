@@ -14,6 +14,7 @@
 
     </header>
     <main class="container mx-auto mt-3">
+        <!-- Search bar -->
         <section class="p-5">
             <div class=" bg-neutral  p-4">
                 <label class="input input-bordered flex items-center gap-2 pe-0 sm:pe-1">
@@ -24,8 +25,16 @@
                   </label>
             </div>
         </section>
+
+        <!-- search result  -->
         <section class="p-5">
+            <div class="text-center hidden" id="toggle" onclick="toggleHandler()">
+                <span class="loading loading-spinner loading-lg bg-green-500"></span>
+            </div>
             <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </div>
+            <div class="text-center hidden mt-5" id="show-all">
+                <button class="btn btn-outline btn-info" onclick="loadAll()">Load All</button>
             </div>
         </section>
     </main>

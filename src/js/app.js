@@ -10,6 +10,16 @@ const displayData = (phones) => {
     const cardContainer = document.getElementById('card-container');
     //clear before card for add new card
     cardContainer.textContent = '';
+    //if more then 12 phones
+    const phoneLength = phones.length;
+    const showAll = document.getElementById('show-all');
+    if(phoneLength > 12){
+        showAll.classList.remove('hidden');
+    }else{
+        showAll.classList.add('hidden');
+    }
+    //for show 12 items
+    phones = phones.slice(0,12);
     phones.forEach(phone => {
         const createDiv = document.createElement('div');
         createDiv.classList = `card w-full bg-neutral text-white shadow-xl mx-auto`;
@@ -26,6 +36,7 @@ const displayData = (phones) => {
         </div>`;
         cardContainer.appendChild(createDiv);
     });
+    toggleHandler(false);
 }
 
 
@@ -33,9 +44,19 @@ const displayData = (phones) => {
 const searchHandler = () =>{
     const searchText = document.getElementById('search').value;
     dataLoad(searchText);
-
+    toggleHandler(true);
 }
 
+
+//toggle handler
+const toggleHandler = (toggleTrue) =>{
+    const toggleHandler = document.getElementById('toggle');
+    if(toggleTrue){
+        toggleHandler.classList.remove('hidden');
+    }else{
+        toggleHandler.classList.add('hidden');
+    }
+}
 
 
 
