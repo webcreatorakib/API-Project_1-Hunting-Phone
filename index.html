@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hunting Phone</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    
 
+<body>
+    <header>
+
+    </header>
+    <main class="container mx-auto mt-3">
+        <section class="p-5">
+            <div class=" bg-neutral  p-4">
+                <label class="input input-bordered flex items-center gap-2">
+                    <input type="text" id="search" class="grow" placeholder="Search" />
+                    <button class="btn" onclick="searchHandler()">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
+                    </button>
+                  </label>
+            </div>
+        </section>
+        <section class="p-5">
+            <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </div>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
     <script src="src/js/app.js"></script>
 </body>
+
 </html>
